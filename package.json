@@ -1,6 +1,6 @@
 {
   "name": "parcel-plugin-codegen",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A plugin for Parcel to generate useful modules at bundle-time.",
   "main": "index.js",
   "scripts": {
@@ -20,7 +20,7 @@
   "author": "Florian Rappl <mail@florian-rappl.de>",
   "license": "MIT",
   "devDependencies": {
-    "parcel-bundler": "^1.12.3"
+    "parcel-bundler": "1.x"
   },
   "dependencies": {}
 }
