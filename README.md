@@ -1,15 +1,16 @@
 # parcel-plugin-codegen
 
+[![Build Status](https://florianrappl.visualstudio.com/parcel-plugin-codegen/_apis/build/status/FlorianRappl.parcel-plugin-codegen?branchName=master)](https://florianrappl.visualstudio.com/parcel-plugin-codegen/_build/latest?definitionId=12&branchName=master)
 [![npm](https://img.shields.io/npm/v/parcel-plugin-codegen.svg)](https://www.npmjs.com/package/parcel-plugin-codegen)
 [![node](https://img.shields.io/node/v/parcel-plugin-codegen.svg)](https://www.npmjs.com/package/parcel-plugin-codegen)
 [![GitHub tag](https://img.shields.io/github/tag/FlorianRappl/parcel-plugin-codegen.svg)](https://github.com/FlorianRappl/parcel-plugin-codegen/releases)
 [![GitHub issues](https://img.shields.io/github/issues/FlorianRappl/parcel-plugin-codegen.svg)](https://github.com/FlorianRappl/parcel-plugin-codegen/issues)
 
-A plugin for Parcel to allow bundle-time code / asset generation. This can be useful to work efficiently with established conventions and reduce duplication and boilerplate code.
+A plugin for Parcel to allow bundle-time asset generation. This can be useful to work efficiently with established conventions and reduce duplication and boilerplate code.
 
 ## Usage
 
-Just install the plugin. In any file reference a `.codegen` file, e.g., in a TypeScript module
+Just install the plugin. In any file reference a `.codegen` file, e.g., in a TypeScript asset
 
 ```js
 const generatedModule = require('./my.codegen');
@@ -33,6 +34,25 @@ module.exports.type = 'html';
 ```
 
 Make sure that the type you return is understood by Parcel. It will be further processed (as such you could also generate, e.g., `ts` assets).
+
+You can also use promises in your code generation. As an example, if your `.codegen` file looks similar to this:
+
+```js
+module.exports = function() {
+  return callSomeApi().then(result => `module.exports = ${JSON.stringify(result)}`);
+};
+```
+
+The new asset will be created asynchronously. Furthermore, you can obviously use `require` or `import` directly in your generated code. Since the asset will be run through Parcel like any other asset, you can use this mechanism to include files from a directory without referencing them explicitly:
+
+```js
+module.exports = function() {
+  return `
+    const { lazy } = require('react');
+    module.exports = lazy(() => import(${JSON.stringify(filePath)}));
+  `;
+};
+```
 
 ## Changelog
 
