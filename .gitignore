@@ -1,0 +1,23 @@
+# Exclude compiled files
+dist
+coverage
+test/uit/reports
+test/uit/screenshots
+mocks
+
+# OS files
+.DS_STORE
+
+# npm files
+node_modules
+*.log
+
+# Editor files
+.idea
+.vscode
+
+.nyc_output
+zeisslets
+.env
+yarn.lock
+.cache
