@@ -1,6 +1,6 @@
 {
   "name": "parcel-plugin-codegen",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A plugin for Parcel to generate useful modules at bundle-time.",
   "main": "index.js",
   "scripts": {

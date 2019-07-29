@@ -12,12 +12,20 @@ class CodeGenAsset extends Asset {
   load() {}
 
   toResult(value) {
-    return [
-      {
-        type: this.type,
-        value
-      }
-    ];
+    if (Array.isArray(value)) {
+      return value;
+    } else if (value && typeof value === "object") {
+      return [value];
+    } else if (typeof value === "string") {
+      return [
+        {
+          type: this.type,
+          value
+        }
+      ];
+    }
+
+    return [];
   }
 
   generate() {
