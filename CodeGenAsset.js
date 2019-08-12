@@ -1,4 +1,6 @@
 const { Asset } = require("parcel-bundler");
+const { readdirSync } = require("fs");
+const { resolve } = require("path");
 
 class CodeGenAsset extends Asset {
   constructor(name, options) {
@@ -6,7 +8,17 @@ class CodeGenAsset extends Asset {
     delete require.cache[require.resolve(name)];
     const generator = require(name);
     this.type = generator.type || "js";
-    this.content = generator();
+    this.content = generator.call(this);
+  }
+
+  getFiles(dir, filter) {
+    const files = readdirSync(dir)
+      .map(m => resolve(dir, m))
+      .filter(m => typeof filter !== "function" || filter(m));
+
+    files.forEach(file => this.addDependency(file, { includedInParent: true }));
+
+    return files;
   }
 
   load() {}

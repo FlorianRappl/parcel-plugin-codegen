@@ -11,6 +11,7 @@ mocks
 # npm files
 node_modules
 *.log
+*.tgz
 
 # Editor files
 .idea

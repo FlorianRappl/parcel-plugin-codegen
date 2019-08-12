@@ -1,5 +1,11 @@
 # parcel-plugin-codegen Changelog
 
+## 0.4.0
+
+- Added TypeScript support
+- Included helpers
+- Call modules with asset binding
+
 ## 0.3.0
 
 - Support returning multiple assets
