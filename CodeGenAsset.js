@@ -24,10 +24,8 @@ class CodeGenAsset extends Asset {
   load() {}
 
   toResult(value) {
-    if (Array.isArray(value)) {
+    if (value && (Array.isArray(value) || typeof value === "object")) {
       return value;
-    } else if (value && typeof value === "object") {
-      return [value];
     } else if (typeof value === "string") {
       return [
         {
