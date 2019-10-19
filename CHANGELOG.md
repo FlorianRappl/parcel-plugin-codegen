@@ -1,5 +1,9 @@
 # parcel-plugin-codegen Changelog
 
+## 0.5.0
+
+- Emit objects directly
+
 ## 0.4.0
 
 - Added TypeScript support
