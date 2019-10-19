@@ -1,11 +1,18 @@
 {
   "name": "parcel-plugin-codegen",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "A plugin for Parcel to generate useful modules at bundle-time.",
   "main": "index.js",
   "typings": "index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FlorianRappl/parcel-plugin-codegen.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FlorianRappl/parcel-plugin-codegen/issues"
   },
   "keywords": [
     "parcel-plugin",
